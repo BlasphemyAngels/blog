@@ -13,6 +13,7 @@ tags:
 
 &ensp;&ensp;&ensp;前段时间我们写了爬取电视剧，今天我把它改变成了爬取游戏，然后boss又来需求了，让这两个并行爬取（因为后面会使用并行爬取加快爬取速度），然后就自己鼓捣了一下。
 
+<!--more-->
 &ensp;&ensp;&ensp;先跑去[官网](https://doc.scrapy.org/en/latest/topics/practices.html)看了一下。
 
 &ensp;&ensp;&ensp;找到了如何并行运行爬虫：
@@ -43,9 +44,6 @@ process.start() # the script will block here until all crawling jobs are finishe
 * 在`commands`目录中添加`__init__.py`文件
 * 在`commands`目录创建`crawlall.py`文件（文件名自拟，只要跟后面的配置相同即可),并写入下面代码
 * `settings.py`目录下创建`setup.py`，写入：
-* 在settings.py中添加配置： COMMANDS_MODULE = 'project_name.commands'
-* 运行命令scrapy crawlall
-&ensp;&ensp;&ensp;写入setup.py中的代码
     ```python
     from setuptools import setup, find_packages
 
@@ -56,8 +54,11 @@ process.start() # the script will block here until all crawling jobs are finishe
         ],
       },
      )
-这个文件的含义是定义了一个crawlall命令，cnblogs.commands为命令文件目录，crawlall为命令名。
  ```
+&ensp;&ensp;&ensp;这个文件的含义是定义了一个crawlall命令，cnblogs.commands为命令文件目录，crawlall为命令名。
+* 在settings.py中添加配置： `COMMANDS_MODULE = 'project_name.commands'`
+* 运行命令scrapy crawlall
+&ensp;&ensp;&ensp;写入setup.py中的代码
     ```python
 
 from scrapy.commands import ScrapyCommand
