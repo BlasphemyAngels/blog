@@ -1,9 +1,15 @@
 ---
-title: 2017-07-01-image-text-mapping
+title: 图文匹配论文阅读
 date: 2017-07-01 15:35:18
 tags:
   - papper
 ---
+
+## 正文
+
+&ensp;&ensp;&ensp;今天来一起阅读两篇图文匹配比较早起的论文：KCCA方法和Deep Fragment
+
+<!--more-->
 
 ### KCCA
 

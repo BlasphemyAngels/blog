@@ -12,6 +12,8 @@ tags:
 
 &ensp;&ensp;&ensp;scrapy是一个开源的爬虫框架，由于实习需要，今天就看了一下，用这个框架的话很省很多时间啊，以前写爬虫时使用requests或者urllib，都是从无一点一点向上写，现在scrapy帮我们实现了一些底层的东西，比如获得一个页面。下面讲一下scrapy的基本用法。
 
+<!--more-->
+
 &ensp;&ensp;&ensp;scrapy的基本结构：
 
 ![scrapy](https://github.com/BlasphemyAngels/MarkDownPhotos/blob/master/scrapy.png?raw=true)

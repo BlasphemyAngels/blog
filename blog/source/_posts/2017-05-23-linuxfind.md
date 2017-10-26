@@ -21,6 +21,8 @@ tags:
 
 &ensp;&ensp;&ensp;&ensp;<font color=#0099ff>Linux</font>中有的时候需要检索文件和命令。这个时候`Linux`提供的强大查找命令就派上了用场。
 
+<!--more-->
+
 ### <span id="jumpwhereis">whereis</span>
 
 &ensp;&ensp;&ensp;搜索程序的位置。注意，它只能用于<font color=#00fff>程序名 </font>。

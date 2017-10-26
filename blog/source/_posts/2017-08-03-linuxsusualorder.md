@@ -9,9 +9,7 @@ tags:
 ---
 
 ## 正文
-
-&ensp;&ensp;&ensp;在使用`linux`过程中会学习到很多有用的新命令。本文就总结一些我目前遇到的，以后会持续添加。
-
+&ensp;&ensp;&ensp;在使用`linux`过程中会学习到很多有用的新命令。本文就总结一些我目前遇到的，以后会持续添加。 
 <!--more-->
 
 ### xsel
@@ -127,6 +125,41 @@ I hesdbbbaadf
 echo "I hessssssdbbbaadffff" | tr -c -d "Ief"
 Ieffff
 ```
+### seq
+
+&ensp;&ensp;&ensp;打印一个序列，sequence
+&ensp;&ensp;&ensp;常用方法：
+* seq -s 指定分隔符,`-s`后面加分隔符
+* seq -w 加入前导0使得输出等宽
+* seq .. FIRST
+* seq .. FIRST LAST
+* seq .. FIRST INCREMENT LAST
+
+### awk
+&ensp;&ensp;&ensp;`awk`不仅是一个命令还是一门语言。主要功能是过滤内容（取列）。
+* `awk '{print $n}' filename` 打印文件第`n`列，列的定义是默认空格分割
+* `awk -F`指定列间分隔符，默认空格
+
+### sed
+
+&ensp;&ensp;&ensp;sed(stream editor)流编辑器
+
+* sed -n 取消自动打印（sed会自动将全部未过滤内容输出）
+
+### tail
+
+&ensp;&ensp;&ensp;取文件的最后几行
+
+* tail -n 取文件最后n行
+* tail -f 监控文件的变化
+
+
+## 常见面试
+
+### 取文件20行到30行内容
+
+* `sed -n '20,30p' filename`
+* `head -30 filename | tail -11`
 
 ## 参考资料
 
