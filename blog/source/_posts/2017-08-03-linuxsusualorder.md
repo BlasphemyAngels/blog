@@ -49,10 +49,8 @@ tags:
 
 * `cat filename | xsel -b -i`
 
-### tr
-
-&ensp;&ensp;&ensp;`tr`命令用来对标准输入中的字符进行转换和删除，然后将转换后的内容输出到标准输出。
-
+### tr 
+&ensp;&ensp;&ensp;`tr`命令用来对标准输入中的字符进行转换和删除，然后将转换后的内容输出到标准输出。 
 #### 命令格式
 
 &ensp;&ensp;&ensp;`tr [选项] 字符集1 [字符集2]` 将标准输入中的字符串1的字符转换为字符串2中的字符。
@@ -135,31 +133,136 @@ Ieffff
 * seq .. FIRST LAST
 * seq .. FIRST INCREMENT LAST
 
-### awk
-&ensp;&ensp;&ensp;`awk`不仅是一个命令还是一门语言。主要功能是过滤内容（取列）。
-* `awk '{print $n}' filename` 打印文件第`n`列，列的定义是默认空格分割
-* `awk -F`指定列间分隔符，默认空格
 
-### sed
 
-&ensp;&ensp;&ensp;sed(stream editor)流编辑器
+### grep
 
-* sed -n 取消自动打印（sed会自动将全部未过滤内容输出）
+&ensp;&ensp;&ensp;查找过滤。
+* -v 排除
+* -B 显示匹配的行，并显示该行之前的num行
+* -A 显示匹配的行，并显示该行之后的num行
+* -C 显示匹配的行，并显示该行前后的num行
 
 ### tail
 
-&ensp;&ensp;&ensp;取文件的最后几行
-
+&ensp;&ensp;&ensp;取文件的最后几行 
 * tail -n 取文件最后n行
 * tail -f 监控文件的变化
 
+### 查看图像大小
+
+* `convert a.jpg -print "Size: %wx%h\n" /dev/null`
 
 ## 常见面试
 
 ### 取文件20行到30行内容
 
 * `sed -n '20,30p' filename`
+* `awk '{if(NR>31 && NR<19) printf $1"\n"}' filename`
 * `head -30 filename | tail -11`
+
+### 将一个目录下的所有以.sh为后缀的文件中的字符串`aaa`替换为`bbb`
+
+* `find dirname -type f -name "*.sh" | xargs sed -i 's#aaa#bbb#g'`
+* `sed -i 's#aaa#bbb#g' find dirname -type f -name "*.sh"`
+* `find dirname -type f -name "*.sh" -exec sed -i 's#bbb#aaa#g' {} \;`
+
+### dns配置文件`resolv.conf`
+
+* `man resolv`
+
+### `host`在企业的作用
+
+* man host 
+* 内部DNS 主机名和ip地址进行对应
+* 编辑/etc/hosts
+
+* 开发、产品、测试等人员用于通过域名测试产品
+* 服务器之间的调用可以用域名（内部的DNS)，方便迁移
+
+### 主机名
+
+* `host 命令`
+* /etc/hostname当前生效
+* /etc/sysconfig/network永久生效
+
+### fstab
+
+* df -h查看分区情况
+* 设置文件系统挂载信息文件，使得系统启动自动挂载文件系统
+* /etc/fstab
+* dd if=/dev/zero of=/dev/sdc bs=4096 count=100
+* mount -t ext4 -o loop,noatime,noexec /dev/sdc /mnt
+* mkfs.
+* fsck 检查不好的处于卸载状态的磁盘
+* 设备么 uuid 标签是等同的，都可以用来挂载
+* fstab很重要，一旦错误将启动不了
+* (1)
+* (2) 救援模式 rescue
+* mount -o rw,remount /
+
+###
+* cat /etc/arch-release
+* uname -r 版本
+* uname -m 32位还是64位
+* hostname
+* uname -n查看主机名和hostname一样
+* uname -a所有
+* useradd /etc/passwd
+* /etc/shadow
+* /etc/group
+* passwd 
+* $PS1
+* whoami
+* su - 用户名 `-`的作用是将当前的环境变量也切换到相应位置
+
+### selinux
+
+* /etc/selinux/config  /etc/systemconfig/selinux
+* sed -i "s#SELINUX=DISABLED#SELINUX=ENFO#" /etc/selinux/config
+* setenforce 0 临时生效
+* getenforce
+
+### 运行级别
+
+* /etc/inittab
+* runlevel 
+* init切换级别
+### 开机启动
+
+* shhd
+* rsyslog
+* network
+* crond
+* sysstat
+* （1）用chkconfig(2)放入/etc/rc.local服务器档案文件，放入rc.local中注释备案。
+* 当挂载NFS网络文件系统时，网卡还没启动，fstab已经启动，这时fstab无法挂载网络文件系统，这时只能使用比网卡启动晚的rc.local才能完成任务。
+
+### 打印行号的方法
+
+* cat -n
+* vi/vim :set number
+* grep -n '.' filename
+* grep -n '$' filename
+* grep -n '^' filename
+* nl filename 
+* awk '{print NR,$0}' filename
+* sed '=' filename 
+* less -N filename
+
+### setfacl getfacl
+
+### 定时任务crond
+
+&ensp;&ensp;&ensp;分两种，一种是系统自动完成的，如日志，一种是用户安装的
+
+crontab -l crontab -e
+
+* crond 适合周期性任务。
+* at 适合执行一次，突发性任务。
+* anacron 适合非7*24小时开机的任务。
+
+crond守护进程，一直运行，crontab是管理它的命令，crontab -l 列表，crontab -e 编辑。
 
 ## 参考资料
 

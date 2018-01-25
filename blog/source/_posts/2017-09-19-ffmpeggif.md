@@ -82,4 +82,10 @@ sudo apt-get install ffmpeg
 
 `convert -delay 100 -loop 0 *,gpg output.gif`
 
+### 查看图像的大小
+
+&ensp;&ensp;&ensp;`convert`还有一个应用就是查看图像的大小：
+
+* `convert a.jpg -print "Size: %wx%h\n" /dev/null`
+
 转载请注明:[Artemis的博客](https://BlasphemyAngels.github.io)--> [点此看原文](https://blasphemyangels.github.io/2017/09/19/2017-09-19-ffmpeggif/)
